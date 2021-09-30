@@ -8,11 +8,15 @@ If you have a lot of dotfiles and switch between multiple shells often, it can b
 
 ## Installation
 
+Use [Basalt](https://github.com/hyperupcall/basalt), a Bash package manager, to add this project as a dependency
+
 ```sh
 basalt global add hyperupcall/dotshellgen
 ```
 
 ## Usage
+
+This reads configuration from "$XDG_CONFIG_HOME/dotshellgen" and generates it in "$XDG_STATE_HOME/dotshellgen"
 
 ```sh
 dotshellgen
