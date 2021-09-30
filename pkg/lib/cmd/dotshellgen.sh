@@ -60,8 +60,14 @@ dotshellgen.main() {
 	shopt -s extglob nullglob globstar
 
 	bash-args parse -- "$@" <<-"EOF"
+	@flag [help.h] - Show help menu
 	@flag [clear] - Clear all generated files
 	EOF
+
+	if [ "${args[help]}" ]; then
+		printf '%s\n' "$argsHelpText"
+		return
+	fi
 
 	local dotshellgen_config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/dotshellgen"
 	local dotshellgen_state_dir="${XDG_STATE_HOME:-$HOME/.local/state}/dotshellgen"
