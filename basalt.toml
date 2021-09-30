@@ -1,0 +1,20 @@
+[package]
+name = 'dotshellgen'
+slug = 'dotshellgen'
+version = ''
+authors = ['Edwin Kofler <edwin@kofler.dev>']
+description = ''
+
+[run]
+dependencies = ['https://github.com/hyperupcall/bash-args.git@80bef81360e259a3d51a3ff2d635e4ae28349354']
+sourceDirs = []
+builtinDirs = []
+binDirs = ['pkg/bin']
+completionDirs = []
+manDirs = []
+
+[run.shellEnvironment]
+
+[run.setOptions]
+
+[run.shoptOptions]
