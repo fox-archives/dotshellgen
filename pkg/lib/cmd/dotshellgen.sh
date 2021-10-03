@@ -64,7 +64,7 @@ dotshellgen.main() {
 	@flag [clear] - Clear all generated files
 	EOF
 
-	if [ "${args[help]}" ]; then
+	if [ "${args[help]}" = 'yes' ]; then
 		printf '%s\n' "$argsHelpText"
 		return
 	fi
@@ -78,6 +78,7 @@ dotshellgen.main() {
 	local concatenated_fish_file="$dotshellgen_state_dir/concatenated.fish"
 	local concatenated_sh_file="$dotshellgen_state_dir/concatenated.sh"
 
+	# TODO: this can just be a yes, return under the `> "$file" :` below
 	if [ "${args[clear]}" = yes ]; then
 		rm -f "$concatenated_bash_file" "$concatenated_zsh_file" "$concatenated_fish_file" "$concatenated_sh_file"
 		return

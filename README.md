@@ -24,4 +24,4 @@ dotshellgen
 
 ## Examples
 
-The author's sample configuration is [here](https://github.com/hyperupcall/dots/tree/main/user/.config/dotshellgen), with the generated results located [here](https://github.com/hyperupcall/dots/blob/main/user/.local/state/dotshellgen/concatenated.bash)
+The author's sample configuration is [here](https://github.com/hyperupcall/dots/tree/main/user/.config/dotshellgen), with the generated results located [here](https://github.com/hyperupcall/dots/blob/main/user/.local/state/dotshellgen)
