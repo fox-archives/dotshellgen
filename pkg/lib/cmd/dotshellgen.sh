@@ -55,7 +55,7 @@ concat() {
 	} >> "$output_file"
 }
 
-dotshellgen.main() {
+main.dotshellgen() {
 	# TODO: move these to basalt.toml
 	shopt -s extglob nullglob globstar
 
