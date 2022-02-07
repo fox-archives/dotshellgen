@@ -6,7 +6,7 @@ authors = ['Edwin Kofler <edwin@kofler.dev>']
 description = 'Dotfile concatenation by categorization'
 
 [run]
-dependencies = ['https://github.com/hyperupcall/bash-args.git@80bef81360e259a3d51a3ff2d635e4ae28349354']
+dependencies = ['https://github.com/hyperupcall/bash-args@v0.9.2']
 sourceDirs = []
 builtinDirs = []
 binDirs = ['pkg/bin']
