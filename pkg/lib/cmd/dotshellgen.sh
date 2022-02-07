@@ -56,9 +56,6 @@ concat() {
 }
 
 main.dotshellgen() {
-	# TODO: move these to basalt.toml
-	shopt -s extglob nullglob globstar
-
 	bash-args parse -- "$@" <<-"EOF"
 	@flag [help.h] - Show help menu
 	@flag [clear] - Clear all generated files

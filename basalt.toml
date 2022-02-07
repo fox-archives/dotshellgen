@@ -16,5 +16,11 @@ manDirs = []
 [run.shellEnvironment]
 
 [run.setOptions]
+errexit = 'on'
+extglob = 'on'
+globstar = 'on'
+nullglob = 'on'
+pipefail = 'on'
 
 [run.shoptOptions]
+shift_verbose = 'on'
