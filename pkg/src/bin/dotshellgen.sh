@@ -15,11 +15,12 @@ is_in_array() {
 
 	local -n array="$array_name"
 
-	local item=; for item in "${array[@]}"; do
+	local item=
+	for item in "${array[@]}"; do
 		if [ "$item" = "$value" ]; then
 			return 0
 		fi
-	done; unset item
+	done; unset -v item
 
 	return 1
 }
@@ -90,14 +91,16 @@ main.dotshellgen() {
 	declare -a pre=() post=() disabled=()
 	source "$dotshellgen_config_dir/config.sh"
 
+	local dirname=
 	for dirname in "${pre[@]}"; do
 		for file in "$dotshellgen_config_dir/$dirname"/*; do
 			concat "$file"
-		done; unset file
-	done; unset dirname
+		done; unset -v file
+	done; unset -v dirname
 
+	local dir=
 	for dir in "$dotshellgen_config_dir"/*/; do
-		local dirname="${dir%/}"; dirname="${dirname##*/}"
+		local dirname="${dir%/}"; dirname=${dirname##*/}
 
 		if is_in_array 'pre' "$dirname"; then
 			continue
@@ -110,14 +113,16 @@ main.dotshellgen() {
 			continue
 		fi
 
+		local file=
 		for file in "$dir"/*; do
 			concat "$file"
-		done; unset file
-	done; unset dir
+		done; unset -v file
+	done; unset -v dir
 
+	local dirname=
 	for dirname in "${post[@]}"; do
 		for file in "$dotshellgen_config_dir/$dirname"/*; do
 			concat "$file"
-		done; unset file
-	done; unset dirname
+		done; unset -v file
+	done; unset -v dirname
 }

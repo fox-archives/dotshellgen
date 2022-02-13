@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-eval "$(basalt-package-init)"
+eval "$(basalt-package-init)" || exit
 basalt.package-init
 basalt.package-load
 
