@@ -1,6 +1,10 @@
 # shellcheck shell=bash
 
 warn() {
+	printf 'Info: %s\n' "$1"
+}
+
+warn() {
 	printf 'Warning: %s\n' "$1"
 }
 
@@ -57,15 +61,13 @@ concat() {
 }
 
 main.dotshellgen() {
-	bash-args parse -- "$@" <<-"EOF"
-	@flag [help.h] - Show help menu
-	@flag [clear] - Clear all generated files
-	EOF
+	local flag_clear='no'
+	local arg=
+	for arg; do case $arg in
+		-h|--help) printf '%s\n' "Usage: [-h|--help] [--clear]"; return ;;
+		--clear) flag_clear='yes'
+	esac done
 
-	if [ "${args[help]}" = 'yes' ]; then
-		printf '%s\n' "$argsHelpText"
-		return
-	fi
 
 	local dotshellgen_config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/dotshellgen"
 	local dotshellgen_state_dir="${XDG_STATE_HOME:-$HOME/.local/state}/dotshellgen"
@@ -76,9 +78,9 @@ main.dotshellgen() {
 	local concatenated_fish_file="$dotshellgen_state_dir/concatenated.fish"
 	local concatenated_sh_file="$dotshellgen_state_dir/concatenated.sh"
 
-	# TODO: this can just be a yes, return under the `> "$file" :` below
-	if [ "${args[clear]}" = yes ]; then
+	if [ "$flag_clear" = 'yes' ]; then
 		rm -f "$concatenated_bash_file" "$concatenated_zsh_file" "$concatenated_fish_file" "$concatenated_sh_file"
+		warn 'Cleared all generated files'
 		return
 	fi
 
@@ -125,4 +127,6 @@ main.dotshellgen() {
 			concat "$file"
 		done; unset -v file
 	done; unset -v dirname
+
+	printf '%s\n' 'Done.'
 }
